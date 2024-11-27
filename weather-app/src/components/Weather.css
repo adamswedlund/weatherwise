@@ -1,0 +1,87 @@
+.weather {
+  place-self: center;
+  padding: 40px;
+  border-radius: 10px;
+  background-image: linear-gradient(45deg, #2f4690, #500ae4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-bar input{
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    padding-left: 25px;
+    color: #626262;
+    background: #ebfffc;
+    font-size: 18px;
+}
+
+/* Circle background for the icon */
+.icon-container {
+    width: 50px;               /* Set width for the circle */
+    height: 50px;              /* Set height for the circle */
+    border-radius: 50%;        /* Make the background a circle */
+    background-color: #4CAF50; /* Background color */
+    display: flex;             /* Center the icon inside the circle */
+    align-items: center;       /* Center vertically */
+    justify-content: center;   /* Center horizontally */
+    cursor: pointer;           /* Add a pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  /* Icon itself */
+  .search-icon {
+    color: white;              /* Icon color */
+    font-size: 20px;           /* Icon size */
+  }
+  
+  /* Hover effect */
+  .icon-container:hover {
+    background-color: #2E7D32; /* Darker green on hover */
+  }
+
+  .weather-icon{
+    width: 150px;
+    margin: 30px 0;
+  }
+  .tempature{
+    color: white;
+    font-size: 80px;
+    line-height: 1;
+  }
+  .location{
+    color: white;
+    font-size: 40px;
+  }
+
+  .weather-data{
+    width: 100%;
+    margin-top: 40px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+  .weather-data .col{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 22px;
+  }
+  
+  .weather-data .col span{
+    display: block;
+    font-size: 16px;
+  }
+  .weather-data .col img{
+    width: 26px;
+    margin-top: 10px;
+  }
