@@ -18,4 +18,5 @@ WEATHER_API_KEY=your_api_key_here
 
 ## Run the App
 - cd weather-app
-- npm start
+- npm run dev
+
