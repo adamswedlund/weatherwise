@@ -1,20 +1,55 @@
+/* Main Container for Information */
 .weather {
-  place-self: center;
-  padding: 40px;
-  border-radius: 10px;
-  background-image: linear-gradient(45deg, #2f4690, #500ae4);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.search-bar input{
+    place-self: center;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #85c1e9 ;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; 
+  }
+  
+  /* Header Section of Title and Icon */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+    padding: 20px;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Title of Applicatoin */
+  .weather-wise {
+    font-size: 32px;
+    color: #fff; 
+    font-weight: bold;
+    flex-grow: 1; 
+    text-align: center;
+  }
+  
+  /* Hambugur Icon for Future Additions */
+  .hamburger-icon {
+    font-size: 28px;
+    color: #fff; 
+    cursor: pointer;
+    flex-shrink: 0; 
+  }
+  
+  /* City Search Bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 60px; 
+  }
+  
+  .search-bar input {
     height: 50px;
     border: none;
     outline: none;
@@ -23,65 +58,81 @@
     color: #626262;
     background: #ebfffc;
     font-size: 18px;
-}
-
-/* Circle background for the icon */
-.icon-container {
-    width: 50px;               /* Set width for the circle */
-    height: 50px;              /* Set height for the circle */
-    border-radius: 50%;        /* Make the background a circle */
-    background-color: #4CAF50; /* Background color */
-    display: flex;             /* Center the icon inside the circle */
-    align-items: center;       /* Center vertically */
-    justify-content: center;   /* Center horizontally */
-    cursor: pointer;           /* Add a pointer cursor */
-    transition: background-color 0.3s; /* Smooth transition */
   }
   
-  /* Icon itself */
-  .search-icon {
-    color: white;              /* Icon color */
-    font-size: 20px;           /* Icon size */
+  /* Search Icon Box */
+  .icon-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f4d03f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
   
-  /* Hover effect */
   .icon-container:hover {
-    background-color: #2E7D32; /* Darker green on hover */
+    background-color: #f1c40f;
   }
-
-  .weather-icon{
-    width: 150px;
-    margin: 30px 0;
-  }
-  .tempature{
+  
+  /* React Search Icon */
+  .search-icon {
     color: white;
-    font-size: 80px;
-    line-height: 1;
+    font-size: 20px;
   }
-  .location{
+  
+  /* Weather Conditions */
+  .weather-icon {
+    width: 140px;
+    margin: 10px 0;
+  }
+  
+  /* Current Tempature  */
+  .tempature {
+    color: white;
+    font-size: 50px;
+    line-height: 1;
+    font-weight: bold;
+  }
+  
+  /* Name of the Location*/
+  .location {
     color: white;
     font-size: 40px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
   }
-
-  .weather-data{
+  
+  /* Detailed Weather Stats */
+  .weather-data {
     width: 100%;
     margin-top: 40px;
     color: white;
     display: flex;
     justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: bold;
   }
-  .weather-data .col{
+  
+  .weather-data .col {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     font-size: 22px;
   }
   
-  .weather-data .col span{
+  .weather-data .col span {
     display: block;
     font-size: 16px;
+    color: #f4d03f
+    
   }
-  .weather-data .col img{
+  
+  .weather-data .col img {
     width: 26px;
     margin-top: 10px;
   }
+  
