@@ -17,4 +17,5 @@ WeatherWise is a sleek and responsive weather application built with **React** a
 WEATHER_API_KEY=your_api_key_here
 
 ## Run the App
--npm start
+- cd weather-app
+- npm start
