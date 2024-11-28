@@ -14,15 +14,47 @@ const Weather = () => {
   const [city, setCity] = useState(""); // City input
   const [weather, setWeather] = useState(null); // Weather data
 
-  const citySearch = async (city) => {
-    if (!city || city.trim() === "") {
-      alert("Please enter a valid city name.");
+  const states = {
+    AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California",
+    CO: "Colorado", CT: "Connecticut", DE: "Delaware", FL: "Florida", GA: "Georgia",
+    HI: "Hawaii", ID: "Idaho", IL: "Illinois", IN: "Indiana", IA: "Iowa",
+    KS: "Kansas", KY: "Kentucky", LA: "Louisiana", ME: "Maine", MD: "Maryland",
+    MA: "Massachusetts", MI: "Michigan", MN: "Minnesota", MS: "Mississippi",
+    MO: "Missouri", MT: "Montana", NE: "Nebraska", NV: "Nevada", NH: "New Hampshire",
+    NJ: "New Jersey", NM: "New Mexico", NY: "New York", NC: "North Carolina",
+    ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania",
+    RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota", TN: "Tennessee",
+    TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington",
+    WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming",
+  };
+
+  // Add lowercase versions for case-insensitive matching
+  Object.keys(states).forEach((key) => {
+    states[key.toLowerCase()] = states[key];
+    states[states[key].toLowerCase()] = states[key];
+  });
+
+  const normalInput = (input) => {
+    const parts = input.trim().split(",").map((part) => part.trim());
+    if (parts.length > 1 && states[parts[1].toLowerCase()]) {
+      parts[1] = states[parts[1].toLowerCase()]; 
+    } else if (states[parts[0].toLowerCase()]) {
+      return states[parts[0].toLowerCase()]; 
+    }
+    return parts.join(", ");
+  };
+
+  const citySearch = async (input) => {
+    const normalizedCity = normalInput(input);
+
+    if (!normalizedCity || normalizedCity.trim() === "") {
+      alert("Please enter a valid city name. Ex. Milwaukee -- Milwaukee, WI -- Milwaukee, Wisconsin");
       return;
     }
 
     try {
-      const apiKey = "f65feb46406092d8582d2721ce5a316e";
-      const City = encodeURIComponent(city.trim());
+      const apiKey = "f65feb46406092d8582d2721ce5a316e"; // Replace with environment variable in production
+      const City = encodeURIComponent(normalizedCity.trim());
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${City}&appid=${apiKey}&units=imperial`;
 
       const response = await fetch(currentWeatherUrl);
@@ -59,9 +91,9 @@ const Weather = () => {
           type="text"
           placeholder="Search"
           value={city}
-          onChange={(e) => setCity(e.target.value)} //set entered city
+          onChange={(e) => setCity(e.target.value)} // Set entered city
           onKeyDown={(e) => {
-            if (e.key === "Enter") citySearch(city); //can utilize the enter key for search
+            if (e.key === "Enter") citySearch(city); // Trigger search on Enter key
           }}
         />
         <div className="icon-container" onClick={() => citySearch(city)}>
@@ -75,7 +107,7 @@ const Weather = () => {
           <p className="location">{weather.name}</p>
           <p className="tempature">{Math.round(weather.main.temp)}°F</p>
 
-          {/* Setting Image for Weather Data*/}
+          {/* Setting Image for Weather Data */}
           <img
             src={
               weather.weather[0].main === "Clear"
