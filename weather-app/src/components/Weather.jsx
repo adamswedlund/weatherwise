@@ -8,15 +8,13 @@ import drizzle_icon from "../assets/drizzle.png";
 import rain_icon from "../assets/rain.png";
 import snow_icon from "../assets/snow.png";
 import wind_icon from "../assets/wind.png";
-import rainy_icon from "../assets/rainy.png";
+import temp_icon from "../assets/temp.png";
 
 const Weather = () => {
-  const [city, setCity] = useState(""); // city 
-  const [weather, setWeather] = useState(null); // weather data
-  const [precipitationChance, setPrecipitationChance] = useState(null); // percipitation chance
+  const [city, setCity] = useState(""); // City input
+  const [weather, setWeather] = useState(null); // Weather data
 
   const search = async (city) => {
-    // Handles invalid entries for city.
     if (!city || city.trim() === "") {
       alert("Please enter a valid city name.");
       return;
@@ -24,42 +22,29 @@ const Weather = () => {
 
     try {
       const apiKey = "f65feb46406092d8582d2721ce5a316e";
-      const encodedCity = encodeURIComponent(city.trim()); 
+      const encodedCity = encodeURIComponent(city.trim());
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodedCity}&appid=${apiKey}&units=imperial`;
 
-      // Retrieve the current weather data from Open Weather
-      const currentResponse = await fetch(currentWeatherUrl);
-      const currentData = await currentResponse.json();
+      const response = await fetch(currentWeatherUrl);
+      const data = await response.json();
 
-      if (currentResponse.status !== 200) {
-        console.error(`Error: ${currentData.message}`);
-        alert(currentData.message); 
+      if (response.status !== 200) {
+        console.error(`Error: ${data.message}`);
+        alert(data.message);
         return;
       }
-    
-      // Set current weather
-      setWeather(currentData); 
 
-      // Get latitude and longitude for the One Call API in Open Weather
-      const { lat, lon } = currentData.coord;
-      const oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=imperial`;
-
-      // Retrieve the weather data from One Call API
-      const oneCallResponse = await fetch(oneCallUrl);
-      const oneCallData = await oneCallResponse.json();
-
-      if (oneCallResponse.status === 200) {
-        setPrecipitationChance(Math.round(oneCallData.daily[0].pop * 100)); // Precipitation chance in %
-      }
+      setWeather(data);
     } catch (error) {
       console.error("Error fetching weather data:", error.message);
     }
   };
 
-  // Default of Milwaukee
+  // Default city to Milwaukee
   useEffect(() => {
     search("Milwaukee");
   }, []);
+
 
   return (
     <div className="weather">
@@ -90,7 +75,7 @@ const Weather = () => {
         <>
           <p className="location">{weather.name}</p>
           <p className="tempature">{Math.round(weather.main.temp)}°F</p>
-           {/* Setting Image for Weather Data*/}
+          {/* Setting Image for Weather Data*/}
           <img
             src={
               weather.weather[0].main === "Clear"
@@ -109,15 +94,11 @@ const Weather = () => {
 
           {/* Weather Data Set */}
           <div className="weather-data">
-          <div className="col">
-              <img src={rainy_icon} alt="Precipitation Icon" />
+            <div className="col">
+              <img src={temp_icon} alt="Temp Icon" />
               <div>
-                <p>
-                  {precipitationChance !== null
-                    ? `${precipitationChance} %`
-                    : "0% "}
-                </p>
-                <span>Precipitation</span>
+                 <p>{Math.round(weather.main.feels_like)}°F</p>
+                <span>Feels Like</span>
               </div>
             </div>
             <div className="col">
