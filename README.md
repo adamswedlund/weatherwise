@@ -1,12 +1,12 @@
 # WeatherWise: A  Weather App 🌦️
 
-WeatherWise is a sleek and responsive weather application built with **React** and powered by the **OpenWeather API**. It allows users to search for real-time weather data for any city, including temperature, precipitation, and wind speed.
+WeatherWise is a responsive weather application built with **React** and powered by the **OpenWeather API**. It allows users to search for real-time weather data for any city, including temperature, precipitation, and wind speed.
 
 ---
 
 ## Features
 - Search for real-time weather in any city.
-- Displays temperature, wind speed, and feels like tempature.
+- Displays temperature, wind speed, and feels-like tempature.
 - Responsive design for desktop and mobile.
 - User-friendly and interactive UI.
 
