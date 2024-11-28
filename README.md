@@ -6,7 +6,7 @@ WeatherWise is a sleek and responsive weather application built with **React** a
 
 ## Features
 - Search for real-time weather in any city.
-- Displays temperature, wind speed, and precipitation chances.
+- Displays temperature, wind speed, and feels like tempature.
 - Responsive design for desktop and mobile.
 - User-friendly and interactive UI.
 
