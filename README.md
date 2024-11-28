@@ -14,7 +14,7 @@ WeatherWise is a sleek and responsive weather application built with **React** a
 - Sign up at OpenWeather.
 - Navigate to your API Keys section and create a new API key.
 - Add the key to a .env file in the root of your projet:
-WEATHER_API_KEY=your_api_key_here
+const apiKey = "paste_api_key_here";
 
 ## Run the App
 - cd weather-app
