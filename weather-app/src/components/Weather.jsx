@@ -14,7 +14,7 @@ const Weather = () => {
   const [city, setCity] = useState(""); // City input
   const [weather, setWeather] = useState(null); // Weather data
 
-  const search = async (city) => {
+  const citySearch = async (city) => {
     if (!city || city.trim() === "") {
       alert("Please enter a valid city name.");
       return;
@@ -22,8 +22,8 @@ const Weather = () => {
 
     try {
       const apiKey = "f65feb46406092d8582d2721ce5a316e";
-      const encodedCity = encodeURIComponent(city.trim());
-      const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodedCity}&appid=${apiKey}&units=imperial`;
+      const City = encodeURIComponent(city.trim());
+      const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${City}&appid=${apiKey}&units=imperial`;
 
       const response = await fetch(currentWeatherUrl);
       const data = await response.json();
@@ -42,9 +42,8 @@ const Weather = () => {
 
   // Default city to Milwaukee
   useEffect(() => {
-    search("Milwaukee");
+    citySearch("Milwaukee");
   }, []);
-
 
   return (
     <div className="weather">
@@ -62,10 +61,10 @@ const Weather = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)} //set entered city
           onKeyDown={(e) => {
-            if (e.key === "Enter") search(city); //can utilize the enter key for search
+            if (e.key === "Enter") citySearch(city); //can utilize the enter key for search
           }}
         />
-        <div className="icon-container" onClick={() => search(city)}>
+        <div className="icon-container" onClick={() => citySearch(city)}>
           <FaSearch className="search-icon" />
         </div>
       </div>
@@ -75,6 +74,7 @@ const Weather = () => {
         <>
           <p className="location">{weather.name}</p>
           <p className="tempature">{Math.round(weather.main.temp)}°F</p>
+
           {/* Setting Image for Weather Data*/}
           <img
             src={
@@ -97,7 +97,7 @@ const Weather = () => {
             <div className="col">
               <img src={temp_icon} alt="Temp Icon" />
               <div>
-                 <p>{Math.round(weather.main.feels_like)}°F</p>
+                <p>{Math.round(weather.main.feels_like)}°F</p>
                 <span>Feels Like</span>
               </div>
             </div>
