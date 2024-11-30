@@ -36,6 +36,7 @@ npm run dev
 ```
 
 ## Example
+The application currently displays a weather card based on the user's inputted city. Given more time, I would add the hourly and daily forecast APIs to provide users with more detailed weather information. 
 <p style="display: flex; justify-content: space-around; align-items: center;">
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/ee881cd7-13aa-4515-8f86-e6ca6985f29a">
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/2139b2f0-cdce-428b-8ead-076a25d35439">
