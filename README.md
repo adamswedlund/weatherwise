@@ -35,4 +35,9 @@ npm run dev
 ```
 
 ## Example
-<img width="314" alt="image" src="https://github.com/user-attachments/assets/ee881cd7-13aa-4515-8f86-e6ca6985f29a">
+<p style="display: flex; justify-content: space-around; align-items: center;">
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/ee881cd7-13aa-4515-8f86-e6ca6985f29a">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/2139b2f0-cdce-428b-8ead-076a25d35439">
+</p>
+
+
