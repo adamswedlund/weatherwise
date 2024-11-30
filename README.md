@@ -20,3 +20,4 @@ const apiKey = "paste_api_key_here";
 - cd weather-app
 - npm run dev
 
+<img width="314" alt="image" src="https://github.com/user-attachments/assets/ee881cd7-13aa-4515-8f86-e6ca6985f29a">
