@@ -30,6 +30,7 @@ WeatherWise is a modern, responsive weather application built with **React** and
 ## Run the App
 ```bash
 npm install
+npm install react-icons
 cd weather-app
 npm run dev
 ```
