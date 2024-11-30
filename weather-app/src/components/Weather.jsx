@@ -53,7 +53,7 @@ const Weather = () => {
     }
 
     try {
-      const apiKey = "f65feb46406092d8582d2721ce5a316e"; // Replace with environment variable in production
+      const apiKey = ""; // Place OpenWeather API key in ""
       const City = encodeURIComponent(normalizedCity.trim());
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${City}&appid=${apiKey}&units=imperial`;
 
@@ -84,7 +84,6 @@ const Weather = () => {
         <h1 className="weather-wise">WeatherWise</h1>
         <FaBars className="hamburger-icon" />
       </div>
-
       {/* Search Bar */}
       <div className="search-bar">
         <input
